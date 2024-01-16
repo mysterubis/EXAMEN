@@ -1,0 +1,62 @@
+name: Tag sur push
+
+on :
+  push:
+    tags:
+      - 'v*'   # Déclenchement sur un push pour les tags commençant par 'r'
+
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Affiche VAR1
+      run: |
+            echo "La valeur de la variable est ${{ vars1 }}"
+  job2:
+    needs: job1
+    if : failure()
+    runs-on : ubuntu-latest
+    steps:
+      - name: Affiche que le Job1 a echoue
+        run: echo "Job1 a echoue"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Affiche VAR1
+      run: |
+            echo "La valeur de la variable est ${{ vars1 }}"
+
+
+
+
+
+
+          push:
+    tags:
+      - 'v*'  # Déclenchement sur un push pour les tags commençant par 'r'
+
+jobs:
+  tagged_job:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
